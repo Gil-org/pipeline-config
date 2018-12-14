@@ -1,4 +1,4 @@
-application_image_repository = "docker-registry.default.svc:5000/demo"
+application_image_repository = "localhost:5000"
 application_image_repository_credential = "docker-registry"
 
 libraries{
