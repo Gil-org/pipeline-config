@@ -1,1 +1,16 @@
-build()
+on_commit{
+    build()
+    static_code_analysis()
+}
+
+on_pull_request to: master, {
+    build()
+    static_code_analysis()
+    deploy_to dev
+    parallel "Accessibility Scanning": { accessibility_compliance_test() },
+             "Penetration Testing": { penetration_test() }
+}
+
+on_merge to: master, {
+    deploy_to prod
+}
